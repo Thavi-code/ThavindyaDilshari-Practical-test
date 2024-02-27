@@ -1,0 +1,53 @@
+<br>
+<div class="container">
+<div class="search-form">
+  <form (ngSubmit)="applyFilters()" #filterForm="ngForm">
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" name="employeeName" [(ngModel)]="filters.employeeName">
+
+    <label for="department">Department:</label>
+    <input type="text" id="department" name="department" [(ngModel)]="filters.department">
+    
+    <button type="submit" class="btn btn-dark">Apply Filters</button>
+  </form>
+</div>
+</div>
+<br>
+
+<table  class="table table-striped-columns">
+    <thead>
+        <tr>
+        <th>EmployeeId</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Department</th>
+        <th>Address</th>
+        <th>MobileNumber</th>
+        <th>Email</th>
+        <th>Birthday</th>
+        <th>CreationDate</th>
+       <th>Option</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of EmployeeList">
+        <td>{{dataItem.EmployeeId}}</td>
+        <td>{{dataItem.FirstName}}</td>
+        <td>{{ dataItem.LastName }}</td>
+        <td>{{ dataItem.Department }}</td>
+        <td>{{ dataItem.Address }}</td>
+        <td>{{ dataItem.MobileNumber }}</td>
+        <td>{{ dataItem.Email }}</td>
+        <td>{{ dataItem.Birthday }}</td>
+        <td>{{ dataItem.CreationDate }}</td>
+       
+      
+         <td>
+            <button type="button" class="btn btn-light mr-1" (click)="updateEmployee(dataItem.EmployeeId)">Edit</button>
+            <button type="button" class="btn btn-light mr-1" (click)="deleteEmployee(dataItem.EmployeeId)">Delete</button>
+        </td>
+        
+      
+        </tr>
+    </tbody>
+  </table>
